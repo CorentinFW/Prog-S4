@@ -18,7 +18,9 @@ public class Pile implements IPile{
         assert this.sommet()==t : "dernier empile ="+this.sommet();
     }
     public boolean estVide() {return elements.isEmpty();}
-    public void initialiser() {elements = new ArrayList<T>();}
+    public void initialiser() {
+        elements = new ArrayList<Object>();
+        }
     public Object sommet() throws PileVideException{
         if (this.estVide())
             throw new PileVideException("en d ́epilant");
