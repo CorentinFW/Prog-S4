@@ -32,3 +32,17 @@ public class Pile implements IPile{
     public int taille(){return elements.size();}
     public String toString(){return "Pile = "+ elements;}
 }
+/*Question 3 On d´esire cr´eer un nouveau type de pile, repr´esentant les piles born´ees, c’est-
+        `a-dire des piles dont le nombre d’´el´ements doit rester inf´erieur `a une certaine limite (taille
+        maximale). Cette taille maximale peut ´evoluer pendant la vie de la pile.
+        — Proposez une description du type abstrait (en indiquant en quoi il diff`ere du type
+        pile).
+        — Ecrivez les classes d’exceptions repr´esentant les erreurs qui peuvent se produire sur
+        les piles born´ees : la pile est pleine et on ne peut plus ajouter d’´el´ements ; la taille
+        maximale ne peut pas ˆetre n´egative ; la taille maximale est diminu´ee mais le nombre
+        d’´el´ements d´ej`a stock´es est sup´erieur `a cette nouvelle taille maximale.
+        — Proposez une interface pour repr´esenter le type Pile born´ee.
+        — Proposez une classe pour l’impl´ementer. Les m´ethodes comporteront des assertions
+        et des signalements d’exceptions aux endroits n´ecessaires. Par d´efaut, la taille maximale est de 10 ´el´ements.
+        — Ecrivez un programme utilisant cette classe. Est-ce qu’une pile bornee peut remplacer une pile : lors de la compilation (substituabilite syntaxique) ? lors de l’execution
+        (substituabilite comportementale) ?*/
