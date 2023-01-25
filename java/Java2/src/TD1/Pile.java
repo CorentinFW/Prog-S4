@@ -32,11 +32,12 @@ public class Pile implements IPile{
     public int taille(){return elements.size();}
     public String toString(){return "Pile = "+ elements;}
 }
-/*Question 3 On d´esire cr´eer un nouveau type de pile, repr´esentant les piles born´ees, c’est-
-        `a-dire des piles dont le nombre d’´el´ements doit rester inf´erieur `a une certaine limite (taille
+/*Question 3 On desire creer un nouveau type de pile, representant les piles born´ees, c’est-
+        a-dire des piles dont le nombre d’elements doit rester inf´erieur `a une certaine limite (taille
         maximale). Cette taille maximale peut ´evoluer pendant la vie de la pile.
         — Proposez une description du type abstrait (en indiquant en quoi il diff`ere du type
         pile).
+        une limite constant pour la taille de la pile, et bcp d'exception en plus
         — Ecrivez les classes d’exceptions repr´esentant les erreurs qui peuvent se produire sur
         les piles born´ees : la pile est pleine et on ne peut plus ajouter d’´el´ements ; la taille
         maximale ne peut pas ˆetre n´egative ; la taille maximale est diminu´ee mais le nombre
