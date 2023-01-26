@@ -1,4 +1,4 @@
-package TD1;
+package TD1.Pile;
 
 public class PileVideException extends Exception {
     public PileVideException() { }

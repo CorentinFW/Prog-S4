@@ -1,4 +1,4 @@
-package TD1;
+package TD1.Pile;
 import java.util.ArrayList;
 public class Pile implements IPile{
     // structure de stockage interne des  ́el ́ements

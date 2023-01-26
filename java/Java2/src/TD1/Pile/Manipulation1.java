@@ -1,4 +1,4 @@
-package TD1;
+package TD1.Pile;
 
 public class Manipulation1 {
     public static void main(String[] args) {
