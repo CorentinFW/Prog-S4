@@ -22,10 +22,11 @@ def AfficheEmetteurs(Maison,Emetteur,rayon):
 
 
 def GenererMaisons(Maison,n):
-    #
-    # A remplir
-    #
-    pass
+    for i in range(0,n):
+        X=randint(1,1000)
+        Y=randint(1,1000)
+        Maison.append(X,Y)
+    # return Maison pas besoin dans ce cas la 
 
 def Couvre(Maison,i,j):
     #
