@@ -1,7 +1,7 @@
-package TD2;
+package TD2.EXO1;
 
 public interface CompteBancaire {
-    float informationCB();
+    double informationCB();
     void ModifierSolde(double n);
     default void fermetureCB(){
        System.out.println("je ferme mon compte et j'avais :"+informationCB()+"euro");
