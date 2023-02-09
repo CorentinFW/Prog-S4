@@ -1,4 +1,4 @@
-package TD3;
+package TD3.preambule;
 
 public class Rectangle {
     private float largeur;

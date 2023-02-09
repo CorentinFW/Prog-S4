@@ -1,5 +1,9 @@
 package TD3;
 
+import TD3.preambule.FileAttente;
+import TD3.preambule.Personne;
+import TD3.preambule.Rectangle;
+
 public class MainTD3 {
     public static void main(String[] args) {
         FileAttente<Personne> FP = new FileAttente<Personne>();

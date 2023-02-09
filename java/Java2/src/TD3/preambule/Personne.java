@@ -1,4 +1,4 @@
-package TD3;
+package TD3.preambule;
 
 public class Personne {
     private String nom;
