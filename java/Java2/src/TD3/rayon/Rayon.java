@@ -2,28 +2,28 @@ package TD3.rayon;
 
 import java.util.ArrayList;
 
-public class Rayon{
-    private ArrayList<Produit> contenu=new ArrayList<Produit>();
+public class Rayon<T>{
+    private ArrayList<T> contenu=new ArrayList<T>();
     public Rayon(){
-        contenu = new ArrayList<Produit>();
+        contenu = new ArrayList<T>();
     }
     public String listingContenu()
     {
 
         String listing="";
-        for (Produit c:contenu)
+        for (T c:contenu)
             listing += c.etiquette();
         return listing;
     }
 
-    public void ajoutsiabsent(Produit A){
+    public void ajoutsiabsent(T A){
         if(!(contenu.contains(A))){
             contenu.add(A);
         }
     }
 
 
-    public ArrayList<Produit> getContenu() {
+    public ArrayList<T> getContenu() {
         return contenu;
     }
 }
