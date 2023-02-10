@@ -1,15 +1,15 @@
 package TD3.rayon;
 
 public class Produit implements ObjetAvecEtiquette{
-    private String etiquette;
-    public Produit(String etiquette){
-        this.etiquette=etiquette();
+    private String etique;
+    public Produit(String etique){
+        this.etique=etique;
     }
     public String etiquette(){
-        return etiquette;
+        return this.etique;
     }
 
     public String getEtiquette() {
-        return etiquette;
+        return etique;
     }
 }

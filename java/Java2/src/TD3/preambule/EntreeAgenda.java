@@ -25,4 +25,12 @@ public class EntreeAgenda <A extends Date,B>{
     public A get_date_() {
         return _date_;
     }
+
+    @Override
+    public String toString() {
+        return "EntreeAgenda{" +
+                "_date_=" + _date_ +
+                ", entree=" + entree +
+                '}';
+    }
 }
