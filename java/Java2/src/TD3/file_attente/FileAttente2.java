@@ -4,7 +4,7 @@ import TD3.preambule.IFile;
 
 import java.util.ArrayList;
 
-public class FileAttente2<T>
+public class FileAttente2<T > implements IFile
 {
     private String nomFile;
     private static int nbEntreesTotal = 0;
@@ -13,9 +13,11 @@ public class FileAttente2<T>
     //public void entre(T p){contenu.add(p); nbEntreesTotal++;}
     public void entre(T e)
     {
-        if (e.isInvite()) contenu.add(e);
+        if(e instanceof IFile){
+            IFile t = (IFile) e;
+        if (t.isInvite()) contenu.add(e);
         else System.out.println("non invite");
-    }
+    }}
     public T sort()
     {
         T p=null;
@@ -51,4 +53,8 @@ public class FileAttente2<T>
     }
 
 
+    @Override
+    public boolean isInvite() {
+        return false;
+    }
 }
