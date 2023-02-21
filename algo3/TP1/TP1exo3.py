@@ -43,10 +43,13 @@ def listesAdjacence(n,A):
         dico[i] = listeVoisin
     return dico
 
-
-def kruskal(g,l):
+def triedepoids(G,l):
     
-    T=[]
+
+# def kruskal(g,l):
+#     TriBulles(g)
+#     T=[]
+#     for
 
 # A = [(0 ,1) ,(0 ,2) ,(0 ,3) ,(1 ,2) ,(1 ,3) ,(2 ,3)]
 # print ( listesAdjacence (4 , A ))
