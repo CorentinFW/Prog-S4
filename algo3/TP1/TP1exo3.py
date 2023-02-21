@@ -3,6 +3,7 @@ from math import sqrt
 from random import*
 # from random import random
 # from random import uniform
+from TP1Exo1ChoixCours import*
 
 
 def distance(A,B):
@@ -42,6 +43,10 @@ def listesAdjacence(n,A):
         dico[i] = listeVoisin
     return dico
 
+
+def kruskal(g,l):
+    
+    T=[]
 
 # A = [(0 ,1) ,(0 ,2) ,(0 ,3) ,(1 ,2) ,(1 ,3) ,(2 ,3)]
 # print ( listesAdjacence (4 , A ))
