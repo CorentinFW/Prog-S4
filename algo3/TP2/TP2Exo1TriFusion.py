@@ -15,8 +15,8 @@ def TriFusion(T):
     if n>1:
         n1=n//2 
         n2=n-n1 
-        T1=TriFusion(T[0,(n//2)-1])
-        T2=TriFusion(T[(n//2),n-1])
+        T1=TriFusion(T[:(n//2)-1])
+        T2=TriFusion(T[(n//2):])
         return Fusion(n1,n2,T1,T2,T)
     
 # Algorithme : Fusion(T1, T2)
@@ -36,7 +36,7 @@ def Fusion(n1, n2, T1, T2, T):
     i2 = 0
     i = 0
     S = []*(n1+n2)
-    for j in range(S-1):
+    for j in range(len(S)-1):
         if i1>n1:
             S[j] = T1[i2]
             i2=+ 1
@@ -51,7 +51,7 @@ def Fusion(n1, n2, T1, T2, T):
     return S
 
 A = [21,2566,8,2,41]
-TriFusion(len(A),A)
+TriFusion(A)
 
 def TriBulles(n,T):
     pass
