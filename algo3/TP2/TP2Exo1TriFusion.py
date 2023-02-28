@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt1
 from random import *
 import time
 
@@ -51,7 +51,7 @@ def Fusion(n1, n2, T1, T2, T):
     return S
 
 A = [21,2566,8,2,41]
-TriFusion(A)
+print(TriFusion(A))
 
 def TriBulles(n,T):
     pass
@@ -68,7 +68,7 @@ if choix==1:
     #Tab=TableauAuHasard(n)
     print("Tableau à trier: ",Tab)
     TabFusion=list(Tab)
-    TriFusion(n, TabFusion)
+    TriFusion(TabFusion)
     print("Après TriFusion: ",TabFusion)
     TriBulles(n, Tab)
     print("Après TriBulles: ",Tab)

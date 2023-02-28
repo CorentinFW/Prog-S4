@@ -43,13 +43,37 @@ def listesAdjacence(n,A):
         dico[i] = listeVoisin
     return dico
 
-def triedepoids(G,l):
+# def triedepoids(l):
+#     T = sorted(l)
+#     return T
     
 
-# def kruskal(g,l):
-#     TriBulles(g)
-#     T=[]
-#     for
+def kruskal(g,l):
+    L =[]
+    T = l
+    T.sort(key=lambda x: x[-1])
+    # T = triedepoids(l)
+    comp = []
+    for i in range(len(T)):
+        comp.append(i)
+    for j in range(len(T)):
+        u = T[j][0]
+        v = T[j][1]
+        if(comp[u]!=comp[v]):
+            p = T[j]
+            p = p[0:-1]
+            L.append(T[j])
+            aux = comp[u]
+            for w in range(len(T)):
+                if(comp[w]==aux):
+                    comp[w] = comp[v]
+    return L
+liste = [(6 ,20) ,(67 ,18) ,(96 ,4) ,(32 ,45)]
+
+A = aretes (liste)
+print (kruskal(4,A))
+
+dessinGraphe(liste,listesAdjacence(len(liste),A))
 
 # A = [(0 ,1) ,(0 ,2) ,(0 ,3) ,(1 ,2) ,(1 ,3) ,(2 ,3)]
 # print ( listesAdjacence (4 , A ))
@@ -60,4 +84,3 @@ def triedepoids(G,l):
 # print ( pointsAleatoires (3 , 10 , 20))
 
 # dessinPoints(pointsAleatoires(45,10,10))
-dessinGraphe(pointsAleatoires(10,10,10),)
