@@ -1,0 +1,31 @@
+﻿System;User story text;Role;Functionality;Purpose;Theme
+systemExample;As a user, I can search for items, so that I can find products;user;search for items;find products;search
+systemExample;As a user, I can search for items by keywords, so that I can find products;user;search for items by keywords;find products;search
+systemExample;As a user, I can browse items freely so that I can find products;user;browse items freely;find products;search
+systemExample;As a user, I can print search results so that I can keep a record of my search;user;print search results;keep a record of my search;search
+systemExample;As a registered user, I can access my profile so that I can review my personal data.;registered user;access profile;review personal data;profile,register
+systemExample;As a registered user, I can log in to the system with my login and password, so that I can access privileged functionalities;registered user;log in to the system with my login and password;access privileged functionalities;login
+systemExample;As a registered user, I can log in to the system on a smartphone with my fingerprint, so that I can access privileged functionalities;registered user;log in to the system on a smartphone with my fingerprint;access privileged functionalities;login
+systemExample;As a user, I can register and create a profile, so that I can have privileges;user;register and create a profile;have privileges;profile,register
+systemExample;As an admin, I can  validate a registration, so that I can control registered users;admin;validate a registration;control registered users;register
+systemExample;As a registered user, I can reset my password, so that I can add more security or recover my password;registered user;reset my password;add more security or recover my password;profile
+;;;;;
+;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
+;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
+ ; ;;;;
+;;;;;
+  ;;;;;
+ ;;;;;
+ ;;;;;
+ ;;;;;
