@@ -18,14 +18,14 @@ int main(int argc, char *argv[]) {
      paramètres sont à adapter en fonction des besoins. Sans ces
      paramètres, l'exécution doit être arrétée, autrement, elle
      aboutira à des erreurs.*/
-  if (argc != XXXXXX) //TODO
+  if (argc != 3) //TODO
       {
     printf("On vous a dit que les paramètres étaient : %s ip_serveur port_serveur  faites un effort !!!! \n", argv[0]);
     exit(1);
     }
 
   /* Etape 1 : créer une socket */   
-  int MaSocket = socket(XXXXXX);//TODO
+  int MaSocket = socket(PF_INET,SOCK_DGRAM,0);//TODO
 
   /* /!\ : Il est indispensable de tester les valeurs de retour de
      toutes les fonctions et agir en fonction des valeurs
