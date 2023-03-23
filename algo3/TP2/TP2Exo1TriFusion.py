@@ -6,19 +6,21 @@ import time
 
 def TableauAuHasard(n):
     TabHasard=[]
-    #
-    # A COMPLETER
-    #
+    for i in range(n):
+        TabHasard.append(randint(1,10000))
+    return TabHasard
 
 def TriFusion(T):
     n = len(T)
+    print("longueur = ",n)
     if n>1:
         n1=n//2 
         n2=n-n1 
-        T1=TriFusion(T[:(n//2)-1])
+        T1=TriFusion(T[:(n//2)])
         T2=TriFusion(T[(n//2):])
+        print("T1 = ", T[:(n//2)], ", T2 = ", T[(n//2):])
         return Fusion(n1,n2,T1,T2,T)
-    
+    return T
 # Algorithme : Fusion(T1, T2)
 # n1 ← taille(T1) ; n2 ← taille(T2)
 # S ← tableau de taille n1 + n2
@@ -36,9 +38,10 @@ def Fusion(n1, n2, T1, T2, T):
     i2 = 0
     i = 0
     S = []*(n1+n2)
-    for j in range(len(S)-1):
-        if i1>n1:
-            S[j] = T1[i2]
+    print(S)
+    for j in range(len(S)):
+        if i1>=n1:
+            S[j] = T2[i2]
             i2=+ 1
         elif i2>=n2:
             S[j] = T1[i1]
@@ -46,12 +49,13 @@ def Fusion(n1, n2, T1, T2, T):
         elif T1[i1]<T2[i2]:
             S[j] =T1[i1]
             i1=+1
-        elif S[j]<T2[i2]:
+        else:
+            S[j]=T2[i2]
             i2 =+1
     return S
 
 A = [21,2566,8,2,41]
-print(TriFusion(A))
+print("mon test a me ",TriFusion(A))
 
 def TriBulles(n,T):
     pass
