@@ -1,3 +1,4 @@
+#include <netinet/in.h>
 #include <stdio.h> 
 #include <unistd.h>
 #include <sys/types.h>
@@ -42,11 +43,37 @@ int main(int argc, char *argv[]) {
   // Il Faut TOUJOURS tester chaque étape avant de faire la suivante
   
   /* Etape 2 :On nomme ici   la socket du client */
-    
-  
+ struct sockaddr_in MonAdr;//struct important pour les socket
+ memset(&MonAdr, 0, sizeof(MonAdr));//initialiser les valeurs
+ MonAdr.sin_family = AF_INET;//addr ipv4
+ MonAdr.sin_addr.s_addr = htonl(INADDR_ANY);//adr local
+ MonAdr.sin_port = htonl(0);//numero du port
+
+//bind fonction qui relie une socket a une adress
+if(bind(MaSocket,(struct sockaddr*)&MonAdr,sizeof(MonAdr))==-1){
+   perror("Erreur la connection n'a pas pu etre établie");//affcihe une erreur 
+   exit(1);//le int dans le exit c'est le boolean associer avec 1 = false 
+}
   /* Etape 3 :Il faut désigner la socket du Perroquet +Trace */
-  
+  struct sockaddr_in PerAddr;
+   memset(&PerAddr,0,sizeof(PerAddr));
+   PerAddr.sin_family = AF_INET;//addr ipv4
+   PerAddr.sin_port = htonl(atoi(argv[2]));//numero du port
+   
+   if(inet_pton(AF_INET, argv[1], &PerAddr.sin_addr)==0){
+      perror("erreur lors de la conversion de l'addresse IP");
+      exit(1);
+   }
+
   /* Etape 4 : On envoie un seul message au perroquet +Trace (*/
+  char* msg = "coucou le peroquet";
+  int taillemsg = strlen(msg);
+
+  if(sendto(MaSocket, msg, taillemsg, 0, (struct sockaddr*)&PerAddr, sizeof(struct sockaddr)) == -1){
+   perror("echec de l'envoie du msg");
+   close(MaSocket);
+   exit(1);
+  }
   
   /* Etape 5 : On recoit le même message +Trace*/
   
