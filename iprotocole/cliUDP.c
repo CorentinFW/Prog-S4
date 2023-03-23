@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     }
 
   /* Etape 1 : créer une socket */   
-  int MaSocket = socket(PF_INET,SOCK_DGRAM,0);//TODO
+  int MaSocket = socket(AF_INET,SOCK_DGRAM,0);//TODO
 
   /* /!\ : Il est indispensable de tester les valeurs de retour de
      toutes les fonctions et agir en fonction des valeurs
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
  memset(&MonAdr, 0, sizeof(MonAdr));//initialiser les valeurs
  MonAdr.sin_family = AF_INET;//addr ipv4
  MonAdr.sin_addr.s_addr = htonl(INADDR_ANY);//adr local
- MonAdr.sin_port = htonl(0);//numero du port
+ MonAdr.sin_port = htons(0);//numero du port
 
 //bind fonction qui relie une socket a une adress
 if(bind(MaSocket,(struct sockaddr*)&MonAdr,sizeof(MonAdr))==-1){
@@ -58,15 +58,15 @@ if(bind(MaSocket,(struct sockaddr*)&MonAdr,sizeof(MonAdr))==-1){
   struct sockaddr_in PerAddr;
    memset(&PerAddr,0,sizeof(PerAddr));
    PerAddr.sin_family = AF_INET;//addr ipv4
-   PerAddr.sin_port = htonl(atoi(argv[2]));//numero du port
+   PerAddr.sin_port = htons(atoi(argv[2]));//numero du port
    
-   if(inet_pton(AF_INET, argv[1], &PerAddr.sin_addr)==0){
+   if(inet_pton(AF_INET, argv[1], &PerAddr.sin_addr)==0){//on verifier qu'on a bien converti l'ip
       perror("erreur lors de la conversion de l'addresse IP");
       exit(1);
    }
 
   /* Etape 4 : On envoie un seul message au perroquet +Trace (*/
-  char* msg = "coucou le peroquet";
+  char* msg = "Cc le perroquet ";
   int taillemsg = strlen(msg);
 
   if(sendto(MaSocket, msg, taillemsg, 0, (struct sockaddr*)&PerAddr, sizeof(struct sockaddr)) == -1){
@@ -76,6 +76,17 @@ if(bind(MaSocket,(struct sockaddr*)&MonAdr,sizeof(MonAdr))==-1){
   }
   
   /* Etape 5 : On recoit le même message +Trace*/
+   char buffer[1024];
+  int tailleBuffer = sizeof(buffer);
+  struct sockaddr_in PerAddr;//a regler
+  socklen_t tailleAdresse = sizeof(PerAddr);
+
+  // On recoit le message avec la fonction recvfrom
+  if (recvfrom(MaSocket, buffer, tailleBuffer, 0, (struct sockaddr*)&PerAddr, &tailleAdresse) == -1) {
+    perror("Client : Erreur lors de la reception du message");
+    close(MaSocket);
+    exit(1);
+  }
   
   /* Etape 6 : On ferme la socket proprement pour éviter les erreurs*/
   
