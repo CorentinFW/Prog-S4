@@ -76,9 +76,9 @@ if(bind(MaSocket,(struct sockaddr*)&MonAdr,sizeof(MonAdr))==-1){
   }
   
   /* Etape 5 : On recoit le même message +Trace*/
-   char buffer[1024];
+  char buffer[1024];
   int tailleBuffer = sizeof(buffer);
-  struct sockaddr_in PerAddr;//a regler
+
   socklen_t tailleAdresse = sizeof(PerAddr);
 
   // On recoit le message avec la fonction recvfrom
@@ -89,6 +89,8 @@ if(bind(MaSocket,(struct sockaddr*)&MonAdr,sizeof(MonAdr))==-1){
   }
   
   /* Etape 6 : On ferme la socket proprement pour éviter les erreurs*/
+  close(MaSocket);
+  
   
   
   printf("Client du perroquet  : Voilà c'est fini\n");//trace de fin
