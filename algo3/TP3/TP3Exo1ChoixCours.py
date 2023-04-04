@@ -18,7 +18,7 @@ def TriBullesCours(Cours):
     n= 0
     for j in range(len(Cours)-1)
         for i in range(1,len(Cours)-1):
-            if Cours[i] >Cours[i+1]:
+            if Cours[i][1] >Cours[i+1][1]:
                 Cours[i],Cours[i+1] = Cours[i+1],Cours[i]
     return Cours
 
