@@ -3,48 +3,62 @@ from random import *
 import time
 
 ###########################################
+import random
 
 def CoursAuHasard(n):
-    Cours=[]
-    for i in range(n-1):
-        HeureCours = randint(1,80)
-        DureCours = randint(1,20)
-        valeurCours = randint(1,10)
-        Cours.append[HeureCours,HeureCours+DureCours,valeurCours]
-    return Cours
-    
-def TriBullesCours(Cours):
-    
-    n= 0
-    for j in range(len(Cours)-1):
-        for i in range(0,len(Cours)-1-j):
-            if Cours[i][1] >Cours[i+1][1]:
-                Cours[i],Cours[i+1] = Cours[i+1],Cours[i]
-    return Cours
+    cours = []
+    for i in range(n):
+        debut = random.randint(1, 80)
+        duree = random.randint(1, 20)
+        valeur = random.randint(1, 10)
+        cours.append([debut, debut + duree, valeur])
+    return cours
 
+def TriBullesCours(cours):
+    n = len(cours)
+    for i in range(n):
+        for j in range(n - 1 - i):
+            if cours[j][1] > cours[j+1][1]:
+                cours[j], cours[j+1] = cours[j+1], cours[j]
 
-def CalculPred(n,Cours):
-    Cours = TriBullesCours(Cours)
-    Pred=n*[-1]
-    for i in range(n-1):
-        if Cours[i][1]<= Cours[i+1][0]:
-            Pred[i+1] = i
-    
-    return Pred
+def CalculPred(cours):
+    n = len(cours)
+    pred = [-1] * n
+    for i in range(n):
+        j = i - 1
+        while j >= 0 and cours[j][1] > cours[i][0]:
+            j -= 1
+        pred[i] = j
+    return pred
 
-def ChoixMaxProgD(n,Cours,Pred):
-    ValMax=n*[0]
-    #
-    # A COMPLETER
-    #
+def ChoixMaxProgD(cours):
+    n = len(cours)
+    TriBullesCours(cours)
+    ValMax = [0] * n
+    for i in range(n):
+        ValMax[i] = cours[i][2]
+        j = i - 1
+        while j >= 0 and cours[j][1] > cours[i][0]:
+            j -= 1
+        if j >= 0:
+            ValMax[i] += ValMax[j]
+        if i > 0 and ValMax[i-1] > ValMax[i]:
+            ValMax[i] = ValMax[i-1]
     return ValMax[n-1]
 
-def ChoixMaxRec(Cours,Pred,k):
-    if k<0:
+def ChoixMaxRec(Cours, Pred, k):
+    if k == -1:
         return 0
-    #
-    # A COMPLETER
-    #
+    else:
+        valeurMax = 0
+        for i in range(k+1):
+            if Pred[i] == -1:
+                val = Cours[i][2] + ChoixMaxRec(Cours, Pred, i-1)
+            else:
+                val = Cours[i][2] + ChoixMaxRec(Cours, Pred, Pred[i])
+            valeurMax = max(valeurMax, val)
+        valeurMaxSansK = ChoixMaxRec(Cours, Pred, k-1)
+        return max(valeurMax, valeurMaxSansK)
 
 def ChoixMaxProgDSol(n,Cours,Pred,Sol):
     ValMax=n*[0]
