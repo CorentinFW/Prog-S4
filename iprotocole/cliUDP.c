@@ -70,6 +70,7 @@ if(bind(MaSocket,(struct sockaddr*)&MonAdr,sizeof(MonAdr))==-1){
   int taillemsg = strlen(msg);
 
   if(sendto(MaSocket, msg, taillemsg, 0, (struct sockaddr*)&PerAddr, sizeof(struct sockaddr)) == -1){
+      //la connexion/socket, le message, sa taille, option, socket qui reçois, a copier jsp exactement
    perror("echec de l'envoie du msg");
    close(MaSocket);
    exit(1);
