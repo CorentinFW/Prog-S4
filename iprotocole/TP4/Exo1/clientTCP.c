@@ -29,11 +29,11 @@ int main() {
     // envoi du message au serveur
     char messageUser[120];
     scanf("%s",messageUser); 
-    strcpy(buffer, messageUser);
+    strcpy(buffer, messageUser);//copy le message
     send(clientSocket, buffer, strlen(buffer), 0);
 
     // réception de la réponse du serveur
-    recv(clientSocket, buffer, 1024, 0);
+    recv(clientSocket, buffer, 1024, 0);//envoie le message
     printf("Received from server: %s\n", buffer);
 
     // fermeture de la connexion avec le serveur

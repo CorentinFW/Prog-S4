@@ -7,23 +7,24 @@
 #include <unistd.h>
 
 #define PORT 5000
-
+//manque les condition va voir TP4/EXO2/serveur.c
 int main() {
     int serverSocket, clientSocket;
     struct sockaddr_in serverAddr, clientAddr;
     char buffer[1024];
-    socklen_t addr_size;
+    socklen_t addr_size; //taille d'une structure de donnée
 
     // création de la socket TCP
     serverSocket = socket(AF_INET, SOCK_STREAM, 0);
 
     // initialisation de la structure de l'adresse du serveur
     serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(PORT);
+    serverAddr.sin_port = htons(PORT);//donne le port sous la bonne forme grace a htons
     serverAddr.sin_addr.s_addr = INADDR_ANY;
 
     // attachement de la socket à l'adresse du serveur
     bind(serverSocket, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
+    // la socket générale, la socket lié reconverti en adresse et sa taille
 
     // mise en écoute de la socket
     listen(serverSocket, 5);
