@@ -1,6 +1,7 @@
-# import matplotlib.pyplot as plt1
+import matplotlib.pyplot as plt
 from random import *
 import time
+
 
 ###########################################
 
@@ -11,16 +12,18 @@ def TableauAuHasard(n):
     return TabHasard
 
 def TriFusion(T):
-    n = len(T)
-    print("longueur = ",n)
-    if n>1:
-        n1=n//2 
-        n2=n-n1 
-        T1=TriFusion(T[:(n//2)])
-        T2=TriFusion(T[(n//2):])
-        print("T1 = ", T[:(n//2)], ", T2 = ", T[(n//2):])
-        return Fusion(n1,n2,T1,T2,T)
-    return T
+    if len(T)<=1:
+        return T
+        
+    else:
+        milieu=len(T)//2 
+        T1= T[:milieu]
+        T2 = T[milieu:]
+        gauche = TriFusion(T1)
+        droite = TriFusion(T2)
+        return Fusion(gauche,droite)
+        
+    
 # Algorithme : Fusion(T1, T2)
 # n1 ← taille(T1) ; n2 ← taille(T2)
 # S ← tableau de taille n1 + n2
@@ -33,35 +36,50 @@ def TriFusion(T):
 # sinon si T1[i1] < T2[i2] alors S[iS ] ← T1[i1] ; i1 ← i1 + 1 ;
 # sinon S[iS ] ← T2[i2] ; i2 ← i2 + 1 ;
 # retourner S
-def Fusion(n1, n2, T1, T2, T):
+def Fusion(T1, T2):
     i1 = 0
     i2 = 0
-    i = 0
-    S = []*(n1+n2)
-    print(S)
-    for j in range(len(S)):
-        if i1>=n1:
-            S[j] = T2[i2]
-            i2=+ 1
-        elif i2>=n2:
-            S[j] = T1[i1]
-            i1=+1
-        elif T1[i1]<T2[i2]:
-            S[j] =T1[i1]
-            i1=+1
+    S = []
+    
+    while i1<len(T1) and i2<len(T2) :
+        if T1[i1]<T2[i2]:
+            S.append(T1[i1])
+            i1 += 1
         else:
-            S[j]=T2[i2]
-            i2 =+1
+            S.append(T2[i2])
+            i2+=1
+    while i1<len(T1):
+        S.append(T1[i1])
+        i1+=1
+    while i2<len(T2):
+        S.append(T2[i2])
+        i2+=1
+
+    # for j in range(n):
+    #     if i1>=n:
+    #         S.append(T2[i2])
+    #         i2=+ 1
+    #     elif i2>=n:
+    #         S.append(T1[i1])
+    #         i1=+1
+    #     elif T1[i1]<T2[i2]:
+    #         S.append(T1[i1])
+    #         i1=+1
+    #     else:
+    #         S.append(T2[i2])
+    #         i2 =+1
     return S
 
 A = [21,2566,8,2,41]
 print("mon test a me ",TriFusion(A))
 
 def TriBulles(n,T):
-    pass
-    #
-    # A COMPLETER (et enlever pass)
-    #
+    for i in range(n,0,-1):
+        for j in range(i-1):
+            if T[j]>T[j+1]:
+                T[j],T[j+1] = T[j+1],T[j]
+    return T
+
 
 #######Programme Principal########
 
@@ -69,13 +87,11 @@ choix=int(input("Taper 1 pour un test sur le TriFusion, 2 pour un comparatif Tri
 if choix==1:
     Tab=[0]
     n=int(input("Entrez la taille du tableau à trier: "))
-    #Tab=TableauAuHasard(n)
+    Tab=TableauAuHasard(n)
     print("Tableau à trier: ",Tab)
     TabFusion=list(Tab)
-    TriFusion(TabFusion)
-    print("Après TriFusion: ",TabFusion)
-    TriBulles(n, Tab)
-    print("Après TriBulles: ",Tab)
+    print("Après TriFusion: ",TriFusion(TabFusion))
+    print("Après TriBulles: ",TriBulles(n, Tab))
 else:    
     #Valeurs de n choisies    
     abscisses = [n for n in range(1,1000,10)]
@@ -89,7 +105,7 @@ else:
         TriBulles(n, T)
         tps1.append(time.time()-t)
         t=time.time()
-        TriFusion(n, T2)
+        TriFusion(T2)
         tps2.append(time.time()-t)
     #Tracé
     plt.plot(abscisses, tps1)
