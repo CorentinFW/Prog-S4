@@ -12,31 +12,34 @@ def Init(n1,n2):
 
 
 def DistanceEdition(S1,S2,E):
+    n = len(S1)
+    m = len(S2)
     E = [[0 for i in range(0,n1+1)] for j in range(0,n2+1)]
-    #
-    # A COMPLETER
-    #
-    pass #A SUPPRIMER
+    bi = -1
+    for i in range(1,n):
+        for j in range(1,m):
+            if S1[i-1] == S2[j-1]:
+                bi = 1
+            else : 
+                bi = 0
+            E[i][j] = min(E[i-1][j]+1,E[i][j-1]+1,E[i-1][j-1]+bi)
+    return E[n-1][m-1]
+
+
     
 
 def Alignement(S1,S2,E):
-    i1=len(S1)
-    i2=len(S2)
+    n=len(S1)
+    m=len(S2)
     
     # while i1>0 and i2>0:
-    #
-    # ACOMPLETER   
-    #
     
-    # while i1>0:
-    #
-    # ACOMPLETER   
-    #
     
-    #while i2>0:
-    #
-    # ACOMPLETER   
-    #
+    # while n>0:
+    
+    
+    #while m>0:
+    
     
     return S1,S2        
     
