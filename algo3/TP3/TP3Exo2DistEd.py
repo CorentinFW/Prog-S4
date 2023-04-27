@@ -2,13 +2,17 @@ import matplotlib.pyplot as plt
 
 ###########################################
 
-def Init(E,n1,n2):
-    #
-    # A COMPLETER
-    #
-    pass #A SUPPRIMER
+def Init(n1,n2):
+    #E[i][j]
+    E = [[0 for i in range(0,n1+1)] for j in range(0,n2+1)]
+    for i in range(n2):
+        E[i][0] = i
+    for j in range(n1):
+        E[0][j] = j
+
 
 def DistanceEdition(S1,S2,E):
+    E = [[0 for i in range(0,n1+1)] for j in range(0,n2+1)]
     #
     # A COMPLETER
     #
@@ -44,9 +48,9 @@ print()
 
 n1=len(S1)
 n2=len(S2)
-E = [[0 for i in range(0,n1+1)] for j in range(0,n2+1)]
 
-print("Les deux chaines S1 et S2 sont à distance: ", DistanceEdition(S1, S2,E),'\n')
+
+print("Les deux chaines S1 et S2 sont à distance: ", DistanceEdition(S1, S2),'\n')
 
 print("Tableau des distances partielles: ")
 for i in range(0,n2+1):
@@ -57,4 +61,3 @@ A,B=Alignement(S1, S2, E)
 print("Alignement de S1 et S2:")
 print(A)
 print(B)
-
